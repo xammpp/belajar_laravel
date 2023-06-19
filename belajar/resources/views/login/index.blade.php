@@ -22,24 +22,32 @@
   <body>
     <div class="container">
       <div class="card login-form">
+        @if(session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
         <div class="card-body">
           <h2 class="card-title">Sign in</h2>
           <h6 class="sub-title text-muted mb-5">Please login to enter the website !</h6>
 
-          <form>
+          <form action="/login" method="post">
+            @csrf
             <div class="mb-4">
-              <label for="email" class="form-label">Email</label>
+              <label for="email">Email</label>
               <input type="email" name="email" class="form-control" id="email" placeholder="enter your email" />
             </div>
+
             <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" name="email" class="form-control" id="password" placeholder="enter your password" />
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="enter your password" />
             </div>
 
             <div class="d-flex justify-content-between">
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                <label class="form-check-label" for="">Remember me</label>
               </div>
 
               <div>
