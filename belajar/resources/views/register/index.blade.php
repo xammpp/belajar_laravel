@@ -1,53 +1,80 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ $title }}</title>
 
-@section('container')
-<div class="row justify-content-center">
-    <div class="col-lg-5">
-        <main class="form-registration w-100 m-auto">
-            <h1 class="h3 mb-3 fw-normal text-center">Registration Form</h1>
-            <form action="/register" method="post">
-                @csrf
-                <div class="form-floating">
-                    <input type="text" name="name" class="form-control @error('name')is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name')}}">
-                    <label for="name">Name</label>
-                    @error('name')
-                        <div id="name" class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="form-floating">
-                    <input type="text" name="username" class="form-control @error('username')is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username')}}">
-                    <label for="username">Username</label>
-                    @error('username')
-                        <div id="username" class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="form-floating">
-                    <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email')}}">
-                    <label for="email">Email</label>
-                    @error('email')
-                        <div id="name" class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="form-floating">
-                    <input type="password" name="password" class="form-control @error('password')is-invalid @enderror" id="password" placeholder="Password" required>
-                    <label for="password">Password</label>
-                    @error('password')
-                        <div id="name" class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <button class="w-100 btn btn-lg btn-warning text-white mt-3" type="submit">Register</button>
-            </form>
-            <small class="d-block text-center mt-3">Already registration ? <a href="/login" class="text-dark">Login</a></small>
-        </main>
+    <!-- Bootstrap -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+
+    <!-- Icons Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card register-form">
+        <div class="card-body">
+          <h2 class="card-title">Registration</h2>
+          <h6 class="sub-title text-muted mb-5">Please registration to login the website !</h6>
+
+          <form action="/register" method="post">
+            @csrf
+            <div class="mb-4">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="enter your name" required value="{{ old('name') }}"/>
+              @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+
+            <div class="mb-4">
+              <label for="username">Username</label>
+              <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="enter your username" required value="{{ old('username') }}" />
+              @error('username')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+
+            <div class="mb-4">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="enter your email" required value="{{ old('email') }}"/>
+              @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+
+            <div class="mb-4">
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control @error('email') is-invalid @enderror" id="password" placeholder="enter your password" required />
+              @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-primary btn-register">Submit</button>
+            </div>
+
+            <div class="mt-3">
+              <label class="d-block text-center" style="font-weight: 400" for="">Already an account ? <a href="/login" class="link">Login</a></label>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
 
-@endsection
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- JS -->
+    <script src="register.js"></script>
+  </body>
+</html>

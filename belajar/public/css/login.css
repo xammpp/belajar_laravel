@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+body,
+html {
+    background-image: url(background.png);
+    font-family: "Lora", serif;
+    height: 100%;
+    font-weight: 700;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    height: 600px;
+    width: 500px;
+    padding: 0 35px;
+    background-color: #fff;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+h2,
+h6 {
+    text-align: center;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+    border-radius: 10px;
+}
+
+.btn-login {
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.link {
+    text-decoration: none;
+    font-size: small;
+    color: black;
+}
+
+.link:hover {
+    text-decoration: none;
+    font-size: small;
+    color: blue;
+}
+
+.btn-google {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+.btn-google a {
+    text-decoration: none;
+    color: black;
+}
+
+.btn-google a:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+.btn-google:hover {
+    height: 40px;
+    border-radius: 10px;
+    color: blue;
+    background-color: whitesmoke;
+    border: none;
+}
+
+.created {
+    display: block;
+    text-align: center;
+    margin-top: 3.5rem;
+    opacity: 50%;
+}
