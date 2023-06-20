@@ -28,6 +28,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         @endif
+
+        @if(session()->has('loginError'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('loginError') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
         <div class="card-body">
           <h2 class="card-title">Sign in</h2>
           <h6 class="sub-title text-muted mb-5">Please login to enter the website !</h6>
@@ -36,12 +44,17 @@
             @csrf
             <div class="mb-4">
               <label for="email">Email</label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="enter your email" />
+              <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="enter your email" required value="{{ old('email') }}"/>
+              @error('email')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
             </div>
 
             <div class="mb-3">
               <label for="password">Password</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="enter your password" />
+              <input type="password" name="password" class="form-control" id="password" placeholder="enter your password" required />
             </div>
 
             <div class="d-flex justify-content-between">
